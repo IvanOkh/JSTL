@@ -15,16 +15,15 @@
     <body>
         <h1>Shopping List</h1>
 
-        <a>Hello,  ${currentlyLoged}<a>
+        <a>Hello,  ${currentlyLoged} <a>   <a href ="shoppingList?action=logout">Log out<a> 
                 
-                <h3>List</h3>
-                <a href ="shoppingList?action=logout">Log out<a>
+                <h2>List</h2>
+                <!--<a href ="shoppingList?action=logout">Log out<a>-->
                         <br>
                         <form action="shoppingList" method="post">
                             <h4> Add Item: <input rows="1" cols="30" name="item" required></textarea> </h4>         
                             <input type="submit" value="Add">
-                            <input type="hidden" name="action" value="add">
-                            
+                            <input type="hidden" name="action" value="add">       
                         </form>
                         
                         <form action="shoppingList" method="post">
