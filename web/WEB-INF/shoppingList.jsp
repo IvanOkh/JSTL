@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Shopping List</title>
     </head>
     <body>
         <h1>Shopping List</h1>
@@ -27,9 +27,11 @@
                         </form>
                         
                         <form action="shoppingList" method="post">
-                        <c:forEach var="ivan" items="${output}">
-                            <input type="radio" name="btn" value="${ivan}">${ivan}<br>
-                        </c:forEach>
+                            
+                            <c:forEach var="ivan" items="${output}">
+                                <input type="radio" name="btn" value="${ivan}">${ivan}<br>
+                            </c:forEach>
+                            
                             <input type="submit" value="delete">
                             <input type="hidden" name="action" value="delete">
                             

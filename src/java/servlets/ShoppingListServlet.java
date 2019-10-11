@@ -25,35 +25,37 @@ public class ShoppingListServlet extends HttpServlet
     {
         HttpSession session = request.getSession();
         String name = (String) session.getAttribute("name");
-        
+        //another action button. ex will store its value and check if it was logout
         String ex = request.getParameter("action");
         
-
-               
+        //check if we have user session
         if (name == null)
         {
             getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
         }
         else 
         { 
+            //this helps to avoid nullpinter exception, so that string logout isn't compared to null
             if(ex == null)
             {
                 ex = "";
             }
             if(ex.equals("logout"))
             {
+                //invalidate session and go to register page
                 session.invalidate();
                 getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);    
             }
-                String dudeName = (String)session.getAttribute("name");
-                request.setAttribute("currentlyLoged", dudeName);
-                
-                ArrayList lizt = (ArrayList) session.getAttribute("list");
-                session.setAttribute("list", lizt);
-                request.setAttribute("output", lizt);
+            //proceed with the user if he exists in session
+            String dudeName = (String)session.getAttribute("name");
+            request.setAttribute("currentlyLoged", dudeName);
             
+            //create initial array list and stoe into session and push it to for loop in shopping list JSP
+            ArrayList lizt = (ArrayList) session.getAttribute("list");
+            session.setAttribute("list", lizt);
+            request.setAttribute("output", lizt);
+            //move user to shopping list
             getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
-            //doGetEverything(request, response);
         }
         
     }
